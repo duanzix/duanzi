@@ -12,11 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.index');
 });
 
 Route::get('/admin','HomeController@admin');
 
+//排行榜
+Route::get('/paihang','HomeController@paihang');
+//排行榜详情页
+Route::get('/xq/{id}','HomeController@xq');
+
+//评论
+Route::post('/comment','HomeController@comment');
 
 //友情链接
 Route::resource('/youlian','YoulianController');
@@ -28,10 +35,12 @@ Route::get('/','HomeController@home');
 Route::resource('user','UserController');
 
 //关于我们
-Route::get('/admin/gy','HomeController@gy');
+Route::get('/admin/gy','WmController@gy');
 
 //关于我们修改
-Route::post('/admin/gy','HomeController@xiu');
+Route::post('/admin/gy','WmController@xiu');
+//关于我们前台
+Route::get('/wom','HomeController@wom');
 
 //广告
 Route::resource('gg','GgController');
@@ -47,4 +56,13 @@ Route::resource('/biaoq','TagController');
 
 //分类跳转
 Route::get('/cate','HomeController@fenlei');
+
+//标签跳段子
+Route::get('/tiao','HomeController@tiao');
+
+//前台标签
+Route::get('/bq','HomeController@bq');
+
+//标题跳转
+Route::get('/lei/{id}','HomeController@lei');
 

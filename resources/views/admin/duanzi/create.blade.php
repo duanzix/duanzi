@@ -19,7 +19,7 @@
     <div class="tpl-block" style="min-height:700px">
         <div class="am-g">
             <div class="tpl-form-body tpl-form-line">
-                <form class="am-form tpl-form-line-form" method="post" action="/duanzi">
+                <form class="am-form tpl-form-line-form" method="post" action="/duanzi" enctype="multipart/form-data">
                     <div class="am-form-group">
                         <label for="user-name" class="am-u-sm-3 am-form-label">标题 <span class="tpl-form-line-small-title"></span></label>
                         <div class="am-u-sm-9">
@@ -36,6 +36,15 @@
                                     @endforeach
                                   </select>
                              </div>
+                     </div>
+
+                     <div class="am-form-group">
+                         <label for="user-phone" class="am-u-sm-3 am-form-label">选择标签<span class="tpl-form-line-small-title"></span></label>
+                            <div class="am-u-sm-9">
+                                    @foreach($tags as $v)
+                                        <input type="checkbox" name="tag_id[]" value="{{$v['id']}}" tpl-form-input" id="user-name" placeholder="">{{$v['name']}}
+                                      @endforeach
+                               </div>
                      </div>
                     
                     <div class="am-form-group">

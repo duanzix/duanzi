@@ -10,8 +10,19 @@ class Duanzi extends Model
     use SoftDeletes;
     protected $table = 'duanzis';
 	protected $dates = ['deleted_at'];
+
 	public function cate()
 	{
 		return $this->belongsTo('App\Cate','cate_id','id');
+	}
+	public function tags()
+	{
+		return $this->belongsToMany('App\Tag','duanzi_tag','duanzi_id','tag_id');
+	}
+	
+	public function comments()
+	{
+  		return $this->hasMany('App\Comment');
+
 	}
 }
