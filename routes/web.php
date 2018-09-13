@@ -17,5 +17,28 @@ Route::get('/', function () {
 
 Route::get('/admin','HomeController@admin');
 
+
 //后台用户
 Route::resource('user','UserController');
+
+//关于我们
+Route::get('/admin/gy','HomeController@gy');
+
+//关于我们修改
+Route::post('/admin/gy','HomeController@xiu');
+
+
+//广告
+Route::resource('gg','GgController');
+
+
+
+//段子列表
+Route::resource('duanzi','DuanZiController');
+
+//分类管理
+Route::resource('fenlei','CateController');
+
+//标签管理
+Route::resource('/biaoq','TagController');
+
