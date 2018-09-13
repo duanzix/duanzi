@@ -16,3 +16,6 @@ Route::get('/', function () {
 });
 
 Route::get('/admin','HomeController@admin');
+
+//分类管理
+Route::resource('/fenlei','CateController');
