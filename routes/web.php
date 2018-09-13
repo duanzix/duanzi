@@ -16,3 +16,9 @@ Route::get('/', function () {
 });
 
 Route::get('/admin','HomeController@admin');
+
+//友情链接
+Route::resource('/youlian','YoulianController');
+
+//前台首页
+Route::get('/','HomeController@home');
