@@ -7,12 +7,12 @@
         </a>
         <ul class="tpl-left-nav-sub-menu" style="display: none">
             <li>
-                <a href="#">
+                <a href="/user/create">
                     <i class="am-icon-angle-right"></i>
                     <span>用户添加</span>
                     <i class="tpl-left-nav-content-ico am-fr am-margin-right"></i>
                 </a>
-                <a href="#">
+                <a href="/user">
                     <i class="am-icon-angle-right"></i>
                     <span>用户列表</span>
                 </a>

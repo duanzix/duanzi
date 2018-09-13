@@ -16,3 +16,6 @@ Route::get('/', function () {
 });
 
 Route::get('/admin','HomeController@admin');
+
+//后台用户
+Route::resource('user','UserController');
