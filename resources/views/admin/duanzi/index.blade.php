@@ -52,19 +52,21 @@
                     </thead>
                     <tbody>
                         
-                        @foreach($youlians as $v)
+                        @foreach($duanzis as $v)
                         <tr>
                             <td>
                                 <input type="checkbox">
                             </td>
                             <td>{{$v['id']}}</td>
-                            <td class="am-hide-sm-only">{{$v['name']}}</td>
-                            <td class="am-hide-sm-only">{{$v['url']}}</td>
+                            <td class="am-hide-sm-only">{{$v['title']}}</td>
+                            <td class="am-hide-sm-only">{{$v['content']}}</td>
+                            <td class="am-hide-sm-only">{{$v['views']}}</td>
+                            <td class="am-hide-sm-only">{{$v['zans']}}</td>
                             <td>
                                 <div class="am-btn-toolbar">
                                     <div class="am-btn-group am-btn-group-xs">
-                                        <a href="/youlian/{{$v['id']}}/edit" class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</a>
-                                        <form style="float:left" action="/youlian/{{$v['id']}}" method="post">
+                                        <a href="/duanzi/{{$v['id']}}/edit" class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</a>
+                                        <form style="float:left" action="/duanzi/{{$v['id']}}" method="post">
                                             {{method_field('DELETE')}}
                                             {{csrf_field()}}
                                             <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
@@ -128,7 +130,7 @@
 				</style>
                 <div class="am-cf">
                     <div class="am-fr">
-                        {{ $youlians->appends(request()->all())->links() }}
+                        {{ $duanzis->appends(request()->all())->links() }}
                     </div>
                 </div>
                 <hr>

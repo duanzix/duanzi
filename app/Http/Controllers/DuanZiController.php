@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Cate;
 use App\Duanzi;
+use App\Tag;
 use Illuminate\Http\Request;
 
 class DuanZiController extends Controller
@@ -30,7 +32,8 @@ class DuanZiController extends Controller
     public function create()
     {
         //
-         return view('admin.duanzi.create');
+        $cates = Cate::all();
+         return view('admin.duanzi.create',compact('cates'));
     }
 
     /**
@@ -75,8 +78,8 @@ class DuanZiController extends Controller
     {
         //
         $duanzi = Duanzi::findOrFail($id);
-
-        return view('admin.duanzi.edit', compact('duanzi'));
+        $cates = Cate::all();
+        return view('admin.duanzi.edit', compact('duanzi','cates'));
     }
 
     /**
@@ -112,7 +115,7 @@ class DuanZiController extends Controller
         //
         $duanzi = Duanzi::findOrFail($id);
 
-        if($duanzi -> save()){
+        if($duanzi -> delete()){
             return back()->with('success','添加成功');
         }else{
             return back()->with('error','添加失败');

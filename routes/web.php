@@ -17,5 +17,9 @@ Route::get('/', function () {
 
 Route::get('/admin','HomeController@admin');
 
+
 //段子列表
 Route::resource('duanzi','DuanZiController');
+
+//分类管理
+Route::resource('fenlei','CateController');
