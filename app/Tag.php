@@ -10,4 +10,9 @@ class Tag extends Model
     use SoftDeletes;
     protected $table = 'tags';
 	protected $dates = ['deleted_at'];
+
+	public function duanzis()
+	{
+		return $this->belongsToMany('App\Duanzi');
+	}
 }

@@ -26,3 +26,9 @@ Route::resource('fenlei','CateController');
 
 //标签管理
 Route::resource('/biaoq','TagController');
+
+//前台首页
+Route::get('/','HomeController@home');
+
+//标签跳段子
+Route::get('/tiao','HomeController@tiao');

@@ -33,7 +33,8 @@ class DuanZiController extends Controller
     {
         //
         $cates = Cate::all();
-         return view('admin.duanzi.create',compact('cates'));
+        $tags = Tag::all();
+         return view('admin.duanzi.create',compact('cates','tags'));
     }
 
     /**
@@ -49,8 +50,11 @@ class DuanZiController extends Controller
         $duanzi -> title = $request->title;
         $duanzi -> content = $request->content;
         $duanzi -> cate_id = $request->cate_id;
+       
+
 
         if($duanzi -> save()){
+             $res = $duanzi->tags()->sync($request->tag_id);
             return redirect('/duanzi')->with('success','添加成功');
         }else{
             return back()->with('error','添加失败');
