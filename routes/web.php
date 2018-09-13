@@ -17,6 +17,16 @@ Route::get('/', function () {
 
 Route::get('/admin','HomeController@admin');
 
+
+//友情链接
+Route::resource('/youlian','YoulianController');
+
+//前台首页
+Route::get('/','HomeController@home');
+
+//后台用户
+Route::resource('user','UserController');
+
 //关于我们
 Route::get('/admin/gy','WmController@gy');
 
@@ -24,10 +34,9 @@ Route::get('/admin/gy','WmController@gy');
 Route::post('/admin/gy','WmController@xiu');
 //关于我们前台
 Route::get('/wom','HomeController@wom');
+
 //广告
 Route::resource('gg','GgController');
-
-
 
 //段子列表
 Route::resource('duanzi','DuanZiController');
@@ -37,4 +46,3 @@ Route::resource('fenlei','CateController');
 
 //标签管理
 Route::resource('/biaoq','TagController');
-
