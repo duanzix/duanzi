@@ -16,3 +16,6 @@ Route::get('/', function () {
 });
 
 Route::get('/admin','HomeController@admin');
+
+//段子列表
+Route::resource('duanzi','DuanZiController');

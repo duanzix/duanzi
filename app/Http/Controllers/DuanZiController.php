@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Duanzi;
 use Illuminate\Http\Request;
 
 class DuanZiController extends Controller
@@ -14,6 +15,11 @@ class DuanZiController extends Controller
     public function index()
     {
         //
+         $duanzis = Duanzi::orderBy('id','desc')
+            ->where('title','like','%'.request()->keywords.'%')
+            ->paginate(10);
+        //解析模板显示用户数据
+        return view('admin.duanzi.index',compact('duanzis'));
     }
 
     /**
@@ -24,6 +30,7 @@ class DuanZiController extends Controller
     public function create()
     {
         //
+         return view('admin.duanzi.create');
     }
 
     /**
@@ -35,6 +42,16 @@ class DuanZiController extends Controller
     public function store(Request $request)
     {
         //
+        $duanzi = new Duanzi; 
+        $duanzi -> title = $request->title;
+        $duanzi -> content = $request->content;
+        $duanzi -> cate_id = $request->cate_id;
+
+        if($duanzi -> save()){
+            return redirect('/duanzi')->with('success','添加成功');
+        }else{
+            return back()->with('error','添加失败');
+        }
     }
 
     /**
@@ -57,6 +74,9 @@ class DuanZiController extends Controller
     public function edit($id)
     {
         //
+        $duanzi = Duanzi::findOrFail($id);
+
+        return view('admin.duanzi.edit', compact('duanzi'));
     }
 
     /**
@@ -69,6 +89,16 @@ class DuanZiController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $duanzi = Duanzi::findOrFail($id);
+        $duanzi -> title = $request->title;
+        $duanzi -> content = $request->content;
+        $duanzi -> cate_id = $request->cate_id;
+
+        if($duanzi -> save()){
+            return redirect('/duanzi')->with('success','添加成功');
+        }else{
+            return back()->with('error','添加失败');
+        }
     }
 
     /**
@@ -80,5 +110,12 @@ class DuanZiController extends Controller
     public function destroy($id)
     {
         //
+        $duanzi = Duanzi::findOrFail($id);
+
+        if($duanzi -> save()){
+            return back()->with('success','添加成功');
+        }else{
+            return back()->with('error','添加失败');
+        }
     }
 }
