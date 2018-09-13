@@ -16,3 +16,12 @@ Route::get('/', function () {
 });
 
 Route::get('/admin','HomeController@admin');
+//关于我们
+Route::get('/admin/gy','HomeController@gy');
+
+//关于我们修改
+Route::post('/admin/gy','HomeController@xiu');
+
+
+//广告
+Route::resource('gg','GgController');
