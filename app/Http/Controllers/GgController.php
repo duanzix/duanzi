@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Gg;
 use Illuminate\Http\Request;
 
 class GgController extends Controller
@@ -14,6 +15,13 @@ class GgController extends Controller
     public function index()
     {
         //
+        //读取数据库， 获取用户数据
+        $ggs = Gg::orderBy('id','desc')
+            ->where('url','like', '%'.request()->keywords.'%')
+            ->paginate(3);
+
+        //解析模板显示到用户数据
+        return view('admin.gg.index', ['ggs'=>$ggs]);
     }
 
     /**
@@ -24,6 +32,7 @@ class GgController extends Controller
     public function create()
     {
         //
+        return view('admin.gg.create');
     }
 
     /**
@@ -35,6 +44,25 @@ class GgController extends Controller
     public function store(Request $request)
     {
         //
+        $gg = new Gg;
+        $gg -> url = $request->url;
+
+        
+
+
+        //文件上传
+        //检测是否有文件上传
+            
+        if ($request->hasFile('image')) {
+            $gg->image = '/'.$request->image->store('uploads/'.date('Ymd'));
+        }
+
+
+        if($gg -> save()){
+            return redirect('/gg')->with('success','添加成功');
+        }else{
+            return back()->with('error','添加失败');
+        }
     }
 
     /**
@@ -57,6 +85,9 @@ class GgController extends Controller
     public function edit($id)
     {
         //
+          $gg = Gg::find($id);
+
+        return view('admin.gg.edit', ['gg'=>$gg]);
     }
 
     /**
@@ -69,6 +100,25 @@ class GgController extends Controller
     public function update(Request $request, $id)
     {
         //
+         $gg = Gg::find($id);
+        $gg -> url = $request->url;
+
+        
+
+
+        //文件上传
+        //检测是否有文件上传
+            
+        if ($request->hasFile('image')) {
+            $gg->image = '/'.$request->image->store('uploads/'.date('Ymd'));
+        }
+
+
+        if($gg -> save()){
+            return redirect('/gg')->with('success','添加成功');
+        }else{
+            return back()->with('error','添加失败');
+        }
     }
 
     /**
@@ -80,5 +130,13 @@ class GgController extends Controller
     public function destroy($id)
     {
         //
+         $gg = Gg::find($id);
+        $gg -> delete();
+
+        if($gg -> delete()){
+          return redirect('/gg')->with('success','删除成功');  
+        }else{
+             return back()->with('error','删除失败');   
+        }
     }
 }
