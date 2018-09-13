@@ -44,3 +44,7 @@ Route::resource('fenlei','CateController');
 
 //标签管理
 Route::resource('/biaoq','TagController');
+
+//分类跳转
+Route::get('/cate','HomeController@fenlei');
+

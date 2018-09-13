@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Cate;
+use App\Duanzi;
+use App\Tag;
 use App\Wm;
+use App\Youlian;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -17,7 +21,15 @@ class HomeController extends Controller
     //前台首页
      public function home()
     {
-    	return view('index');
+      $cates = Cate::all();
+      $duanzi = Duanzi::orderBy('id','desc')
+            ->where('title','like', '%'.request()->keywords.'%')
+            ->paginate(10);
+      $tags = Tag::all();
+      $xinduan = Duanzi::orderBy('created_at','desc')->take(5)->get();
+      
+      $youlian = Youlian::all();
+    	return view('index',compact('duanzi','cates','tags','youlian','xinduan'));
 
     }
 
@@ -56,5 +68,27 @@ class HomeController extends Controller
        }
 
     }
+
+    //分类跳转
+    public function fenlei(Request $request)
+    {
+      
+      if(!empty($request->cateid)){
+        $duanzi = Duanzi::where('cate_id', $request->cateid)->orderBy('id','desc')->paginate(10);
+      }
+      
+      if(empty($request->cateid)){
+       $duanzi = Duanzi::orderBy('id','desc')
+            ->where('title','like', '%'.request()->keywords.'%')
+            ->paginate(10);
+      }
+       $cates = Cate::all();
+      $tags = Tag::all();
+      $youlian = Youlian::all();
+      $xinduan = Duanzi::orderBy('created_at','desc')->take(5)->get();
+      return view('index',compact('duanzi','cates','tags','youlian','xinduan'));
+    }
+
+
 
 }

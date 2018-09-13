@@ -16,7 +16,7 @@
         </div>
     </div>
     
-    <div class="tpl-block" style="height:700px">
+    <div class="tpl-block" style="min-height:700px">
         <div class="am-g">
             <div class="tpl-form-body tpl-form-line">
                 <form class="am-form tpl-form-line-form" method="post" action="/duanzi">
