@@ -42,3 +42,5 @@ Route::resource('fenlei','CateController');
 //标签管理
 Route::resource('/biaoq','TagController');
 
+//前台标签
+Route::get('/bq','HomeController@bq');

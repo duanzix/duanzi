@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tag;
 use App\Wm;
 use Illuminate\Http\Request;
 
@@ -47,6 +48,15 @@ class HomeController extends Controller
             return back()->with('error','设置失败');
         }
 
+    }
+
+    /*
+    前台标签
+     */
+    public function bq()
+    {
+      $bq = Tag::all();
+      return view('home.bq',compact('bq'));
     }
 
 }
