@@ -17,7 +17,7 @@ class CateController extends Controller
         //读取数据库 获取用户数据
         $cate = Cate::orderBy('id','desc')
             ->where('name','like', '%'.request()->keywords.'%')
-            ->paginate(10);
+            ->paginate(5);
         //解析模板显示用户数据
         return view('admin.cate.index', ['cate'=>$cate]);
         
@@ -42,7 +42,6 @@ class CateController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $cate = new Cate;
         $cate -> name = $request->name;
 
