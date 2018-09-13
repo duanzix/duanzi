@@ -12,11 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.index');
 });
 
 Route::get('/admin','HomeController@admin');
 
+//排行榜
+Route::get('/paihang','HomeController@paihang');
+//排行榜详情页
+Route::get('/xq/{id}','HomeController@xq');
+
+//评论
+Route::post('/comment','HomeController@comment');
 
 //段子列表
 Route::resource('duanzi','DuanZiController');
