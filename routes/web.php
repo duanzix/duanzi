@@ -18,12 +18,12 @@ Route::get('/', function () {
 Route::get('/admin','HomeController@admin');
 
 //关于我们
-Route::get('/admin/gy','HomeController@gy');
+Route::get('/admin/gy','WmController@gy');
 
 //关于我们修改
-Route::post('/admin/gy','HomeController@xiu');
-
-
+Route::post('/admin/gy','WmController@xiu');
+//关于我们前台
+Route::get('/wom','HomeController@wom');
 //广告
 Route::resource('gg','GgController');
 

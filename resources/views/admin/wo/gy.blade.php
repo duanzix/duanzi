@@ -28,7 +28,7 @@
                      <div class="am-form-group">
                         <label class="am-u-sm-3 am-form-label">文本</label>
                         <div class="am-u-sm-9">
-                            <script id="editor" type="text/plain" name="text" value="{{$women ? $women->text : ''}}" style="width:100%;height:500px;">{!!$women ? $women->text : ''!!}</script>
+                            <script id="editor" type="text/plain" name="text" style="width:100%;height:500px;">{!!$women->text!!}</script>
                         </div>
                     </div>
                     <div class="am-form-group">
