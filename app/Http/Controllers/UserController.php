@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -13,7 +15,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        //读取数据库， 获取用户数据
+        $users = User::orderBy('id','desc')
+            ->where('name','like', '%'.request()->keywords.'%')
+            ->paginate(8);
+
+        //解析模板显示到用户数据
+        return view('admin.user.index', ['users'=>$users]);
     }
 
     /**
@@ -23,7 +31,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.user.create');
     }
 
     /**
@@ -34,7 +42,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User;
+        $user -> name = $request->name;
+        $user -> password = Hash::make($request->password);
+
+        if($user -> save()){
+            return redirect('/user')->with('success','添加成功');
+        }else{
+            return back()->with('error','添加失败');
+        }
+    
     }
 
     /**
@@ -56,7 +73,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+
+        return view('admin.user.edit', ['user'=>$user]);
     }
 
     /**
@@ -68,7 +87,14 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->name = $request->name; 
+
+        if($user -> save()){
+            return redirect('/user')->with('success','修改成功');
+        }else{
+            return back()->with('error','修改失败');
+        }
     }
 
     /**
@@ -79,6 +105,13 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user -> delete();
+
+        if($user -> delete()){
+            return back()->with('error','删除失败'); 
+        }else{  
+             return redirect('/user')->with('success','删除成功');   
+        }
     }
 }

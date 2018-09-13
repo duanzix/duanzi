@@ -59,7 +59,7 @@
                             </td>
                             <td>{{$v['id']}}</td>
                             <td class="am-hide-sm-only">{{$v['title']}}</td>
-                            <td class="am-hide-sm-only">{{$v['content']}}</td>
+                            <td class="am-hide-sm-only">{!!$v['content']!!}</td>
                             <td class="am-hide-sm-only">{{$v['views']}}</td>
                             <td class="am-hide-sm-only">{{$v['zans']}}</td>
                             <td>

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Youlian extends Model
+class Comment extends Model
 {
-    protected $table = 'youlians';
+    //
 }
