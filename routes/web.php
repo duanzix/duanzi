@@ -23,3 +23,6 @@ Route::resource('duanzi','DuanZiController');
 
 //分类管理
 Route::resource('fenlei','CateController');
+
+//标签管理
+Route::resource('/biaoq','TagController');
