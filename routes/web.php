@@ -54,6 +54,9 @@ Route::resource('fenlei','CateController');
 //标签管理
 Route::resource('/biaoq','TagController');
 
+//分类跳转
+Route::get('/cate','HomeController@fenlei');
+
 //标签跳段子
 Route::get('/tiao','HomeController@tiao');
 
@@ -61,4 +64,8 @@ Route::get('/tiao','HomeController@tiao');
 Route::get('/bq','HomeController@bq');
 
 //点赞数
-Route::post('/ajax','DuanZiController@zan');
+Route::get('/zan','DuanZiController@zan');
+
+//标题跳转
+Route::get('/lei/{id}','HomeController@lei');
+

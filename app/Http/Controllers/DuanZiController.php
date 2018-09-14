@@ -128,7 +128,7 @@ class DuanZiController extends Controller
 
     public function zan()
     {
-       $id = $_POST['id'];
+       $id = $_GET['id'];
 
        $duanzi = Duanzi::findOrFail($id);
        $duanzi -> zans = $duanzi -> zans +1;

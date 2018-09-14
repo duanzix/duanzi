@@ -13,6 +13,6 @@ class Tag extends Model
 
 	public function duanzis()
 	{
-		return $this->belongsToMany('App\Duanzi');
+		return $this->belongsToMany('App\Duanzi','duanzi_tag','tag_id','duanzi_id');
 	}
 }

@@ -50,12 +50,12 @@
 
 <body class="home-template">
     <!-- start header -->
-    <header class="main-header" style="background-image: url(static/images/bg.jpg)" ">
-        <div class="container ">
-            <div class="row ">
-                <div class="col-sm-12 ">                    <h1><a href="http://duanziwang.com/ "><img src='static/picture/300.png' height="75 " width="75 " /></a></h1>
-                    <h1><a href="http://duanziwang.com/ ">段子网</a></h1>
-                    <h2 class="hide ">段子网是一个最新段子、笑话段子、段子来了、一句话段子的主题站。为苦逼忙碌的生活添点笑料。</h2>
+   <header class="main-header" style="background-image: url(/static/images/bg.jpg)"">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">                 <h1><a href="http://duanziwang.com/"><img src='{{$women['logo']}}' height="75" width="75" /></a></h1>
+                    <h1><a href="http://duanziwang.com/">{{$women['title']}}</a></h1>
+                    <h2 class="hide">段子网是一个最新段子、笑话段子、段子来了、一句话段子的主题站。为苦逼忙碌的生活添点笑料。</h2>
                 </div>
             </div>
         </div>

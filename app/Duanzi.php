@@ -11,7 +11,10 @@ class Duanzi extends Model
     protected $table = 'duanzis';
 	protected $dates = ['deleted_at'];
 
-
+	public function cate()
+	{
+		return $this->belongsTo('App\Cate','cate_id','id');
+	}
 	public function tags()
 	{
 		return $this->belongsToMany('App\Tag','duanzi_tag','duanzi_id','tag_id');

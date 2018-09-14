@@ -50,12 +50,12 @@
 
 <body class="home-template">
     <!-- start header -->
-    <header class="main-header" style="background-image: url(static/images/bg.jpg)" ">
-        <div class="container ">
-            <div class="row ">
-                <div class="col-sm-12 ">                    <h1><a href="http://duanziwang.com/ "><img src='{{$women['logo']}}' height="75 " width="75 " /></a></h1>
-                    <h1><a href="http://duanziwang.com/ ">段子网</a></h1>
-                    <h2 class="hide ">段子网是一个最新段子、笑话段子、段子来了、一句话段子的主题站。为苦逼忙碌的生活添点笑料。</h2>
+    <header class="main-header" style="background-image: url(/static/images/bg.jpg)"">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">                 <h1><a href="http://duanziwang.com/"><img src='{{$women['logo']}}' height="75" width="75" /></a></h1>
+                    <h1><a href="http://duanziwang.com/">{{$women['title']}}</a></h1>
+                    <h2 class="hide">段子网是一个最新段子、笑话段子、段子来了、一句话段子的主题站。为苦逼忙碌的生活添点笑料。</h2>
                 </div>
             </div>
         </div>
@@ -86,10 +86,13 @@
 
 
                 <main class="col-md-8 main-content ">
-               
+                <div class="cover tag-cover">
+                    <h3 class="tag-name">
+                    分类 <code>{{$ca['name']}}</code> 下的文章    </h3>
+                </div>
                <!-- start Adsense widget -->
 <div class="widget ">
-<script async src="static/js/adsbygoogle.js "></script>
+<script async src="/static/js/adsbygoogle.js "></script>
 <!-- AutoSize2018-2 -->
 <ins class="adsbygoogle "
      style="display:block "
@@ -110,14 +113,14 @@
         <div class="post-meta ">
             <time class="post-date " datetime="2018-09-13T00:38:34+08:00 ">{{substr($v['created_at'],0,10)}}</time>&ensp;
             <time class="post-date ">{{$v['views']}}°C</time>&ensp;
-            <time class="post-date "><a href="javascript:; " class="post-like " data-pid="{{$v['id']}}"><i class="fa-thumbs-ups "></i>赞 (<span class="asd">{{$v['zans']}}</span>)</a></time>
+            <time class="post-date "><a href="javascript:; " class="post-like " data-pid="993 "><i class="fa-thumbs-ups "></i>赞 (<span>1</span>)</a></time>
         </div>
     </div>
  <div class="post-content "> {!!$v['content']!!}           </div>
     <footer class="post-footer clearfix ">
         <div class="pull-left tag-list ">
-        <i class="fa fa-folder-open-o "></i><a href="/cate?cateid={{$v->cate['id']}}">{{$v->cate['name']}}</a>&nbsp;&nbsp;
-            <i class="fa fa-tags "></i>@foreach($v->tags as $vv)<a href="/cate?tag_id={{$vv['id']}}">
+        <i class="fa fa-folder-open-o "></i><a href="http://duanziwang.com/category/%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%AE%B5%E5%AD%90/ ">{{$v->cate['name']}}</a>&nbsp;&nbsp;
+            <i class="fa fa-tags "></i><a href="http://duanziwang.com/tag/%E6%96%B0%E6%89%8B/ ">@foreach($v->tags as $vv)
                 {{$vv['name']}}
                 @endforeach</a>        </div>
 
@@ -125,7 +128,7 @@
         <div class="post-meta ">
             <time class="post-date">{{$v['created_at']}}</time>&ensp;
             <time class="post-date ">121°C</time>&ensp;
-            <time class="post-date "><a href="javascript:;" id="qwe" class="post-like qwe" data-pid="{{$v['id']}}" value="1" ><i class="fa-thumbs-ups "></i>赞 (<span class="asd">{{$v['zans']}}</span>)</a></time>
+            <time class="post-date "><a href="javascript:; " class="post-like " data-pid="993 "><i class="fa-thumbs-ups "></i>赞 (<span class="asd">{{$v['zans']}}</span>)</a></time>
         </div>
     </div>
  <div class="post-content ">         {!!$v['content']!!}   </div>
@@ -165,7 +168,11 @@
 <div class="widget ">
 <h4 class="title ">手气不错</h4>
   <div class="content community ">
+<<<<<<< HEAD
   <a href="http://duanziwang.com/goodluck "><img src="/static/picture/goodluck.png " width="100% " alt="手气不错 "></a>
+=======
+  <a href="http://duanziwang.com/goodluck "><img src="static/picture/goodluck.png " width="100% " alt="手气不错 "></a>
+>>>>>>> 59e04162e7cc45462cf192d2c05e545b250982a3
   </div>
 </div>
 -->
@@ -247,7 +254,4 @@
         </div class="container ">
 </section>
 
-
-    
 @include('layouts.home._floot');
-
