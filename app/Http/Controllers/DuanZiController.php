@@ -125,4 +125,18 @@ class DuanZiController extends Controller
             return back()->with('error','添加失败');
         }
     }
+
+    public function zan()
+    {
+       $id = $_POST['id'];
+
+       $duanzi = Duanzi::findOrFail($id);
+       $duanzi -> zans = $duanzi -> zans +1;
+
+        if($duanzi -> save()){
+            echo 1;
+        }else{
+           echo 2;
+        }
+    }
 }

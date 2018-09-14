@@ -59,3 +59,6 @@ Route::get('/tiao','HomeController@tiao');
 
 //前台标签
 Route::get('/bq','HomeController@bq');
+
+//点赞数
+Route::post('/ajax','DuanZiController@zan');

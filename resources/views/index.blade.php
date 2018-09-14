@@ -125,7 +125,7 @@
         <div class="post-meta ">
             <time class="post-date">{{$v['created_at']}}</time>&ensp;
             <time class="post-date ">121°C</time>&ensp;
-            <time class="post-date "><a href="javascript:; " class="post-like " data-pid="993 "><i class="fa-thumbs-ups "></i>赞 (<span class="asd">{{$v['zans']}}</span>)</a></time>
+            <time class="post-date "><a href="javascript:;" id="qwe" class="post-like qwe" data-pid="{{$v['id']}}" value="1" ><i class="fa-thumbs-ups "></i>赞 (<span class="asd">{{$v['zans']}}</span>)</a></time>
         </div>
     </div>
  <div class="post-content ">         {!!$v['content']!!}   </div>
@@ -303,36 +303,48 @@
     <script src="static/js/jquery.min.js "></script>
     <script src="static/js/bootstrap.min.js "></script>
     <script src="static/js/js.js "></script>
-
+<meta name="csrf-token" content="{{ csrf_token() }}"> 
 <link rel="stylesheet " type="text/css " href="/static/css/style.css " />
 <script type="text/javascript " src="/static/js/jquery.js "></script>
 <script type="text/javascript " src="/static/js/jquery.fs.macaroon.js "></script>
 <script>
-    $(".post-like ").on("click ", function(){
+    $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
+    // $(".post-like ").on("click ", function(){
+    //     var th = $(this);
+    //     var id = th.attr('data-pid');
+    //     var cookies = $.macaroon('_syan_like') || " ";
+    //     if (!id || !/^\d{1,10}$/.test(id)) return;
+    //     if (-1 !== cookies.indexOf(", " + id + ", ")) return alert("您已经赞过了！ ");
+    //     cookies ? cookies.length >= 160 ? (cookies = cookies.substring(0, cookies.length - 1), 
+    //     cookies = cookies.substr(1).split(", "), 
+    //     cookies.splice(0, 1), 
+    //     cookies.push(id), 
+    //     cookies = cookies.join(", "), 
+    //     $.macaroon("_syan_like ", ", " + cookies + ", ")) : $.macaroon("_syan_like ", cookies + id + ", ") : $.macaroon("_syan_like ", ", " + id + ", ");
+    //     $.post('http://duanziwang.com/action/like?up',{
+    //     cid:id
+    //     },function(data){
+    //     th.addClass('actived');
+    //     var zan = th.find('span').text();
+    //     th.find('span').text(parseInt(zan) + 1);
+    //     },'json');
+    // });
+    
+   $(".post-like ").on("click ", function(){
+
         var th = $(this);
         var id = th.attr('data-pid');
-        var cookies = $.macaroon('_syan_like') || " ";
-        if (!id || !/^\d{1,10}$/.test(id)) return;
-        if (-1 !== cookies.indexOf(", " + id + ", ")) return alert("您已经赞过了！ ");
-        cookies ? cookies.length >= 160 ? (cookies = cookies.substring(0, cookies.length - 1), 
-        cookies = cookies.substr(1).split(", "), 
-        cookies.splice(0, 1), 
-        cookies.push(id), 
-        cookies = cookies.join(", "), 
-        $.macaroon("_syan_like ", ", " + cookies + ", ")) : $.macaroon("_syan_like ", cookies + id + ", ") : $.macaroon("_syan_like ", ", " + id + ", ");
-        $.post('http://duanziwang.com/action/like?up',{
-        cid:id
-        },function(data){
-        th.addClass('actived');
-        var zan = th.find('span').text();
-        th.find('span').text(parseInt(zan) + 1);
-        },'json');
-    });
+        $.ajax({
+            url:'/ajax',
+            type:'post',
+            data:{id:id},
+            success:function(data){
+                zan = th.find('span').text();
+                th.find('.asd').html(parseInt(zan) + 1);
 
-   $(".post-like ").on("click ", function(){
-        var th = $(this);
-        var zan = th.find('span').text();
-        th.find('.asd').html(parseInt(zan) + 1);
+                alert('点赞成功');
+            }
+        })
     });
 </script>
 </body>
